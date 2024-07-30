@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPAW Kristiana Test Player</title>
+    <!-- Include Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+    <!-- Include Video.js HLS plugin -->
+    <script src="https://unpkg.com/video.js@7.17.0/dist/video.min.js"></script>
+    <script src="https://unpkg.com/@videojs/http-streaming@2.15.1/dist/videojs-http-streaming.min.js"></script>
+    <!-- Include NPAW Plugin -->
+    <script src="https://artifact.plugin.npaw.com/artifactory/plugins/js/7.2.31/NpawPlugin.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .button-container {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button.active {
+            background-color: #28a745;
+            
+        }
+
+        video {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>NPAW Kristiana Test Player</h1>
+    <div class="button-container">
+        <button id="bpsButton" class="active">Bit/s</button>
+        <button id="mbpsButton">Mbps</button>
+    </div>
+    <video
+        id="videoPlayer"
+        class="video-js vjs-default-skin"
+        controls
+        preload="auto"
+        width="600"
+        height="300"
+        data-setup='{}'>
+        <source src="https://origin.demo.dev.codavel.com/hls/bigbuck/main.m3u8" type="application/x-mpegURL">
+    </video>
+    <!-- Link to the external JavaScript file -->
+    <script type="module" src="./video-script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bpsButton = document.getElementById('bpsButton');
+            const mbpsButton = document.getElementById('mbpsButton');
+
+            bpsButton.addEventListener('click', function() {
+                setActiveButton(bpsButton);
+            });
+
+            mbpsButton.addEventListener('click', function() {
+                setActiveButton(mbpsButton);
+            });
+
+            function setActiveButton(activeButton) {
+                bpsButton.classList.remove('active');
+                mbpsButton.classList.remove('active');
+                activeButton.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
