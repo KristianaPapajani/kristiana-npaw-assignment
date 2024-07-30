@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #formContainer {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #formContainer label {
+            margin-right: 10px;
+        }
+        #formContainer input, #formContainer select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        #formContainer button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #formContainer button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Analytics Visualization</h1>
+    <div id="formContainer">
+        <label for="refreshInterval">Refresh Interval (seconds):</label>
+        <input type="number" id="refreshInterval" name="refreshInterval" value="10" min="1">
+        <label for="dateRange">Time Range:</label>
+        <select id="dateRange" name="dateRange">
+            <option value="last6hours">Last 6 hours</option>
+            <option value="last24hours">Last 24 hours</option>
+            <option value="thisweek">This week</option>
+        </select>
+        <button id="updateIntervalButton">Update</button>
+    </div>
+    <canvas id="myChart" style="max-width: 800px; width: 100%; height: auto;"></canvas>
+    <script src="./chart-script.js"></script>
+</body>
+</html>
